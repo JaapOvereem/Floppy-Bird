@@ -14,7 +14,8 @@ function setup() {
   mass = 50; 
   floppy = loadImage("images/35-disk.png");
   accel = mass * 0.01; 
-  randomNum1 = random(200,350)
+  randomNum1 = random(200,350);
+  randomNum2 = randomNum1 - 150;
 }
 
 function draw() {
@@ -24,7 +25,7 @@ function draw() {
   velocity += accel; 
   yVal += velocity;
 	image(floppy,width/2,yVal, mass+20,mass-10); 
-  rect(320, -10, 50, 75);
+  rect(320, -10, 50, randomNum2);
   rect(320, randomNum1, 50, 300);
   
   if (yVal > height - mass/2) {
