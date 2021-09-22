@@ -9,7 +9,7 @@ function setup() {
   
   yVal = 0;  
   velocity = 0; 
-  mass = 50; 
+  mass = 100; 
   
   accel = mass * 0.01; 
 }
@@ -30,8 +30,9 @@ function draw() {
 
 
 function keyPressed(spacebar) {
-  yVal + 50;  
-  velocity = -10; 
+  yVal + 40;  
+  // - mass gedeeld door 6 om bij elke mass een proportionele stuiter te krijgen
+  velocity = -mass / 6; 
 }
 
 
