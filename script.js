@@ -16,7 +16,12 @@ function setup() {
   accel = mass * 0.01; 
   randomNum1 = random(200,350);
   randomNum2 = randomNum1 - 150;
+  rect1 = new Rect(320, -10, 50, randomNum2)
+  rect2 = new Rect(320, randomNum1, 50, 300)
+  rects.push(rect1);
+  rects.push(rect2);
 }
+
 
 function draw() {
   background(127);
