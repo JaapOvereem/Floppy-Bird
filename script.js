@@ -9,8 +9,8 @@ function setup() {
   
   yVal = 0;  
   velocity = 0; 
-  mass = 100; 
-  
+  mass = 60; 
+  floppy = loadImage("images/35-disk.png");
   accel = mass * 0.01; 
 }
 
@@ -20,7 +20,8 @@ function draw() {
   
   velocity += accel; 
   yVal += velocity;
-	ellipse(width/2,yVal, mass,mass); 
+	image(floppy,width/2,yVal, mass,mass); 
+  rect(320, -10, 40, 75)
   
   if (yVal > height - mass/2) {
     velocity *= -0.6;
