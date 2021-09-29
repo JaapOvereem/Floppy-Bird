@@ -12,6 +12,7 @@ class Rect {
   }
 }
 
+var gif_createImg;
 var yVal;
 var accel;
 var velocity;
@@ -21,7 +22,7 @@ var rects = [];
 
 function setup() {
   createCanvas(640, 360);
-
+  backgroundIMG = loadImage("images/foto.jpg");
   yVal = 0;
   velocity = 0;
   mass = 50;
@@ -29,9 +30,8 @@ function setup() {
   accel = mass * 0.01;
 }
 
-
 function draw() {
-  background(127);
+  background(backgroundIMG);
   fill(255, 0, 0);
 
   velocity += accel;
