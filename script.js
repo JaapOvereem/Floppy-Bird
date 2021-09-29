@@ -1,10 +1,14 @@
+class Rect{
+  constructor(){
 
+  }
+}
 
 var yVal; 
 var accel; 
 var velocity; 
 var mass; 
-
+var rects = [];
 
 function setup() {
   createCanvas(640, 360);
