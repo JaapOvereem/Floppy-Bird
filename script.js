@@ -13,9 +13,9 @@ class Rect {
     this.x += -3;
   }
 
-  checkCollision(){
-    if(this.x - 50 < width / 2){
-     this.color = "red";
+  checkCollision() {
+    if (this.x - 50 < width / 2) {
+      this.color = "red";
     }
   }
 }
@@ -27,6 +27,7 @@ var velocity;
 var mass;
 var rects = [];
 
+let gameState = 0
 
 function setup() {
   createCanvas(640, 360);
@@ -36,24 +37,25 @@ function setup() {
   mass = 50;
   floppy = loadImage("images/35-disk.png");
   accel = mass * 0.01;
+  pressStart = loadImage("images/press start.png")
+  endBackground = loadImage("images/endbackground.png")
 }
 
 function draw() {
-  background(backgroundIMG);
-  fill(255, 0, 0);
   
-  // if(gameState == 0){
-  //   startGame();
-  // } else if(gameState == 1){
-  //   playGame();
-  // } else if(gameState == 2){
-  //   finishGame();
-  // }
-  game();
+
+  if (gameState == 0) {
+    startGame();
+  } else if (gameState == 1) {
+    playGame();
+  } else if (gameState == 2) {
+    finishGame();
+  }
 }
 
-function game(){
-  
+function game() {
+  background(backgroundIMG);
+
   velocity += accel;
   yVal += velocity;
   image(floppy, width / 2, yVal, mass + 20, mass - 10);
@@ -76,8 +78,8 @@ function game(){
     rects.push(rect2);
 
     // remove unnessecary pipes
-    if(rects.length > 6){
-      rects.splice(0,2);
+    if (rects.length > 6) {
+      rects.splice(0, 2);
     }
   }
 
@@ -87,7 +89,17 @@ function game(){
   });
 }
 
+function startGame(){
+  background(pressStart);
+}
 
+function playGame(){
+  game();
+}
+
+function finishGame(){
+  background(endBackground);
+}
 
 function keyPressed(spacebar) {
   yVal + 40;
@@ -95,7 +107,15 @@ function keyPressed(spacebar) {
   velocity = -mass / 6;
 }
 
+function mousePressed(){
+  console.log(gameState);
+  if(gameState == 0){
+    gameState += 1;
 
+  } else if(gameState == 2){
+    gameState = 0;
+  }
+}
 
 
 
