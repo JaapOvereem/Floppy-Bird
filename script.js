@@ -4,11 +4,19 @@ class Rect {
     this.y = y;
     this.w = w;
     this.h = h;
+    this.color = "green";
   }
 
   drawRect() {
+    fill(this.color);
     rect(this.x, this.y, this.w, this.h);
     this.x += -3;
+  }
+
+  checkCollision(){
+    if(this.x - 50 < width / 2){
+     this.color = "red";
+    }
   }
 }
 
@@ -33,7 +41,19 @@ function setup() {
 function draw() {
   background(backgroundIMG);
   fill(255, 0, 0);
+  
+  // if(gameState == 0){
+  //   startGame();
+  // } else if(gameState == 1){
+  //   playGame();
+  // } else if(gameState == 2){
+  //   finishGame();
+  // }
+  game();
+}
 
+function game(){
+  
   velocity += accel;
   yVal += velocity;
   image(floppy, width / 2, yVal, mass + 20, mass - 10);
@@ -54,11 +74,18 @@ function draw() {
 
     rects.push(rect1);
     rects.push(rect2);
+
+    // remove unnessecary pipes
+    if(rects.length > 6){
+      rects.splice(0,2);
+    }
   }
 
-  rects.forEach(p => p.drawRect());
+  rects.forEach((p) => {
+    p.drawRect()
+    p.checkCollision()
+  });
 }
-
 
 
 
