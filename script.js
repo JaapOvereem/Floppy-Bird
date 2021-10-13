@@ -79,7 +79,7 @@ function game() {
     yVal = height - mass / 2;
   }
 
-  if (frameCount % 80 == 0) {
+  if (frameCount % 85 == 0) {
 
 
     randomHeight = random(height - 150);
@@ -97,7 +97,7 @@ function game() {
   }
 
   
-   if (frameCount % 90 == 0 && rects.length > 3.6) {
+   if (frameCount % 95 == 0 && rects.length > 3.6) {
     score = score + 1;
   } 
 
