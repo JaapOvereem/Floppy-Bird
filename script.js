@@ -97,7 +97,7 @@ function game() {
   }
 
   
-   if (frameCount % 85 == 0 && rects.length > 3.8) {
+   if (frameCount % 85 == 0 && rects.length > 3.9) {
     score = score + 1;
   } 
 
@@ -143,6 +143,7 @@ function mousePressed() {
 
   } else if (gameState == 2) {
     rects = [];
+    score = 0;
 
     gameState = 0;
   }
