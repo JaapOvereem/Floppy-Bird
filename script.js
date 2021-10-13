@@ -14,10 +14,14 @@ class Rect {
   }
 
   checkCollision() {
-    if (this.x - 50 < width / 2) {
+    if (width / 2 + 50 > this.x && (width / 2) < this.x + this.w) {
       if (yVal + mass - 10 > this.y && yVal < this.y + this.h) {
+        gameState = 2;
         this.color = "red";
       }
+    }
+    else {
+      this.color = "green";
     }
   }
 }
@@ -40,7 +44,7 @@ function setup() {
   floppy = loadImage("images/35-disk.png");
   accel = mass * 0.01;
   pressStart = loadImage("images/press start.png")
-  endBackground = loadImage("images/endbackground.png")    
+  endBackground = loadImage("images/endbackground.png")
 
 }
 
@@ -53,7 +57,8 @@ function draw() {
     startGame();
   } else if (gameState == 1) {
     playGame();
-  } else if (gameState == 2) {
+  }
+  else if (gameState == 2) {
     finishGame();
   }
 }
@@ -72,7 +77,7 @@ function game() {
   }
 
   if (frameCount % 85 == 0) {
-    
+
 
     randomHeight = random(height - 150);
 
@@ -88,13 +93,14 @@ function game() {
     }
   }
 
+
   rects.forEach((p) => {
     p.drawRect()
     p.checkCollision()
   });
 }
-  
-    
+
+
 
 function startGame() {
   background(pressStart);
@@ -115,6 +121,7 @@ function keyPressed(spacebar) {
 }
 
 
+
 function mousePressed() {
   console.log(gameState);
   if (gameState == 0) {
@@ -122,6 +129,8 @@ function mousePressed() {
 
 
   } else if (gameState == 2) {
+    rects = [];
+    
     gameState = 0;
   }
 }
