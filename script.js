@@ -97,7 +97,7 @@ function game() {
   }
 
   
-   if (frameCount % 85 == 0 && rects.length > 3.9) {
+   if (frameCount % 85 == 0 && rects.length > ) {
     score = score + 1;
   } 
 
