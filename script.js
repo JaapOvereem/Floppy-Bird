@@ -12,6 +12,8 @@ class Rect {
     rect(this.x, this.y, this.w, this.h);
     this.x += -3;
   }
+  
+  
 
   checkCollision() {
     if (width / 2 + 50 > this.x && (width / 2) < this.x + this.w) {
@@ -32,6 +34,7 @@ var accel;
 var velocity;
 var mass;
 var rects = [];
+var score = 0;
 
 let gameState = 0
 
@@ -45,7 +48,7 @@ function setup() {
   accel = mass * 0.01;
   pressStart = loadImage("images/press start.png")
   endBackground = loadImage("images/endbackground.png")
-
+  textAlign(CENTER);
 }
 
 
@@ -93,11 +96,21 @@ function game() {
     }
   }
 
+  
+   if (frameCount % 85 == 0 && rects.length > 3.8) {
+    score = score + 1;
+  } 
 
   rects.forEach((p) => {
     p.drawRect()
     p.checkCollision()
   });
+
+  fill('white');
+  textSize(25);
+  text('Score:', 50, 35)
+  text(score, 100, 35);
+
 }
 
 
@@ -130,7 +143,7 @@ function mousePressed() {
 
   } else if (gameState == 2) {
     rects = [];
-    
+
     gameState = 0;
   }
 }
